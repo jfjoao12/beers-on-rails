@@ -1,0 +1,36 @@
+
+Model Company (corresponds to the table companies)
+  - ID (auto  increment PK)
+  - name:string
+  - updated_at:timestamp
+  - creates_at:timestamp
+
+Model Beers (corresponds to the table beers)
+  - ID (auto  increment PK)
+  - name:string
+  - price:decimal
+  - description:text
+  - company_id:integer (FK)
+  - updated_at:timestamp
+  - creates_at:timestamp
+
+
+Routes
+  GET     /companies      => companies:#index
+  GET     /companies/:id  => companies:#show
+
+  Gets    /beers          => beers#index
+  GET     /beers/:id      => beers#show
+  GET     /beers/new      => beers#new
+  POST    /beers          => beers#create
+  GET     /beers/:id/edit => beers#edit
+  PATCH   /beers/:id      => beers#updated
+  DELETE  /beers/:id      => beers#delete
+
+Controller CompaniesController
+  - action: index (Gets and displays all companies)
+  - action: show  (Gets and displays a single company)
+
+Views /companies
+  - index view: /app/views/comapanies/index.html.erb
+  - show view:  /app/views/companies/show.html.erb
